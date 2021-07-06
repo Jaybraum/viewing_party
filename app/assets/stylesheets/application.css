@@ -29,3 +29,36 @@ footer {
   align-self: baseline;
   flex-direction: row;
 }
+
+.password_confirmation_failure {
+  background-color: darkred;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  height: 30px;
+  padding-top: 25px;
+  padding-left: 20px;
+  line-height: 1px;
+}
+
+.email_exists_failure {
+  background-color: darkred;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  height: 30px;
+  padding-top: 25px;
+  padding-left: 20px;
+  line-height: 1px;
+}
+
+.success {
+  background-color: darkgreen;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  height: 30px;
+  padding-top: 25px;
+  padding-left: 20px;
+  line-height: 1px;
+ */
