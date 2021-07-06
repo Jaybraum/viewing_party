@@ -3,28 +3,30 @@
   <head>
     <title>ViewingParty</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-    <% end %>
+    <div class="topnav">
+     <%# <%= image_tag('paw_print.png', id: 'main-logo') %> %>
+      <span style="text-align: right">
+      <a class="active" href="/">Log-In</a>
+      <a class="active" href="/register">Register</a>
+      </span>
+    </div>
+    <div class="col-sm", style='padding-left: 25px'>
+      <div style='height: 50%'>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: name %>
+        <% end %>
+        <br>
+      </div>
     <main>
       <%= yield %>
     </main>
-    <footer>
-      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px" >
-      <div>
-        <p>
-          Thank you to <a href="https://www.themoviedb.org/about/logos-attribution">The MovieDB</a> for providing the movie data that is used in this application.
-        </p>
-        <p>
-          Further citation information regarding the movie data used in this project can be found <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small-README.html">here.</a>
-        </p>
-      </div>
+    </div>
     </footer>
   </body>
 </html>

@@ -1,12 +1,9 @@
 <h1>New User Registration</h1>
-<div id="login_form">
-  <%= form_with model: @user, local: true do |form| %>
-    <%= form.label :email, 'Email:' %>
-    <%= form.text_field :email %><br><br>
-    <%= form.label :password, 'Password:' %>
-    <%= form.password_field :password %><br><br>
-    <%= form.label :password_confirmation, 'Password Confirmation:' %>
-    <%= form.password_field :password_confirmation %><br><br>
+<div id="login_form" style="width: 50%">
+  <%= bootstrap_form_with model: @user, local: true do |form| %>
+    <%= form.text_field :email, label: 'Email' %><br>
+    <%= form.password_field :password, label: 'Password' %><br>
+    <%= form.password_field :password_confirmation, label: 'Password Confirmation' %><br>
     <%= form.submit 'Create User' %>
   <% end %>
 </div>

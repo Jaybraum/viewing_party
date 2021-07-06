@@ -14,6 +14,16 @@
  *= require_self
  */
 
+ .active {
+  margin: 0;
+  position: relative;
+  top: 10%;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: right;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -33,32 +43,48 @@ footer {
 .password_confirmation_failure {
   background-color: darkred;
   color: white;
-  font-size: larger;
+  font-size: small;
   font-weight: bold;
-  height: 30px;
-  padding-top: 25px;
+  height: 20px;
+  padding-top: 2px;
   padding-left: 20px;
-  line-height: 1px;
 }
 
 .email_exists_failure {
   background-color: darkred;
   color: white;
-  font-size: larger;
+  font-size: small;
   font-weight: bold;
-  height: 30px;
-  padding-top: 25px;
+  height: 20px;
+  padding-top: 2px;
   padding-left: 20px;
-  line-height: 1px;
 }
 
 .success {
   background-color: darkgreen;
   color: white;
-  font-size: larger;
+  font-size: small;
   font-weight: bold;
-  height: 30px;
-  padding-top: 25px;
+  height: 20px;
+  padding-top: 2px;
   padding-left: 20px;
-  line-height: 1px;
+}
+
+.topnav {
+  background-color: darkblue;
+  height: 50px;
+  word-spacing: 30px;
+  padding-right: 20px;
+  border-style: solid;
+  border-color: darkblue;
+}
+.topnav span {
+  float:right;
+  margin: 0;
+  padding-top: 7px;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
 }
