@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+
+  end
+
   private
 
   def user_params

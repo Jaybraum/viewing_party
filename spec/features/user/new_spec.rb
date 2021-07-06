@@ -6,9 +6,9 @@ RSpec.describe 'new user registration page', type: :feature do
     it 'contains fields for email, password, and password confirmation' do
       visit register_path
 
-      expect(page).to have_content('Email:')
-      expect(page).to have_content('Password:')
-      expect(page).to have_content('Password Confirmation:')
+      expect(page).to have_content('Email')
+      expect(page).to have_content('Password')
+      expect(page).to have_content('Password Confirmation')
       expect(page).to have_button('Create User')
     end
   end
