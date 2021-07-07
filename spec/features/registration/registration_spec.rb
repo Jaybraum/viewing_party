@@ -46,7 +46,7 @@ RSpec.describe 'new user registration page', type: :feature do
     end
     it "it creates new user with proper credentials and redirects to dashboard page" do
       visit register_path
-      
+
       within "#registration_form" do
         fill_in "user[email]", with: 'bob'
         fill_in "user[password]", with: '123'
@@ -55,7 +55,7 @@ RSpec.describe 'new user registration page', type: :feature do
 
       click_on "Create User"
 
-      expect(page).to have_content("Welcome, bob!")
+      expect(page).to have_content("Welcome bob!")
       expect(current_path).to eq(dashboard_index_path)
     end
   end

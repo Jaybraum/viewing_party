@@ -17,7 +17,7 @@ RSpec.describe "Logging In" do
 
     expect(current_path).to eq(dashboard_index_path)
 
-    expect(page).to have_content("Welcome, bob")
+    expect(page).to have_content("Welcome bob!")
   end
   it "throws an error if email is not attached to a user" do
     visit login_path

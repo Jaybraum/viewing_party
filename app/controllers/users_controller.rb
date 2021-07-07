@@ -14,7 +14,6 @@ class UsersController < ApplicationController
       user = user_params
       user[:email] = user[:email].downcase
       new_user = User.create(user)
-
       session[:user_id] = new_user.id
       redirect_to dashboard_index_path if current_user.user?
       redirect_to admin_dashboard_path if current_user.admin?
