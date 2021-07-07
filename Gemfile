@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap', '~> 5.0.1'
+gem "bootstrap_form", "~> 4.0"
 
 group :development, :test do
   gem 'pry'
