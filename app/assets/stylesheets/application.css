@@ -40,17 +40,7 @@ footer {
   flex-direction: row;
 }
 
-.password_confirmation_failure {
-  background-color: darkred;
-  color: white;
-  font-size: small;
-  font-weight: bold;
-  height: 20px;
-  padding-top: 2px;
-  padding-left: 20px;
-}
-
-.email_exists_failure {
+.error {
   background-color: darkred;
   color: white;
   font-size: small;

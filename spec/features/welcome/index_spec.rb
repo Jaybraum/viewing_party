@@ -10,13 +10,23 @@ RSpec.describe 'admin index page', type: :feature do
     end
   end
 
-  describe "Link to form" do
+  describe "Link to registration form" do
     it "Has a link to the new user registration page" do
       visit root_path
 
       click_on "Register"
 
       expect(current_path).to eq(register_path)
+    end
+  end
+
+  describe "Link to login form" do
+    it "Has a link to the  user login page" do
+      visit root_path
+
+      click_on "Login"
+
+      expect(current_path).to eq(login_path)
     end
   end
 end

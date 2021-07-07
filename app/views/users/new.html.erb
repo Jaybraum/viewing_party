@@ -1,5 +1,5 @@
 <h1>New User Registration</h1>
-<div id="login_form" style="width: 50%">
+<div id="registration_form" style="width: 50%">
   <%= bootstrap_form_with model: @user, local: true do |form| %>
     <%= form.text_field :email, label: 'Email' %><br>
     <%= form.password_field :password, label: 'Password' %><br>
