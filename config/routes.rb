@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#index"
-  
+
   get '/register', to: 'users#new'
   post '/users', to: 'users#create'
 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
   resources :movies, only: [:index]
-  #resources :users
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#admin_dashboard'
+  end
 end

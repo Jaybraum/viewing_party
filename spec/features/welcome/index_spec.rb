@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'admin index page', type: :feature do
+RSpec.describe 'welcome page', type: :feature do
 
   describe 'page appearance' do
     it 'welcomes' do

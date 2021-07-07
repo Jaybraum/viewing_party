@@ -38,7 +38,7 @@ RSpec.describe "Logging In" do
   it "throws an error if password is wrong" do
     user = User.create(email: "bob", password: "123")
 
-    visit login_path
+    visit '/login'
 
     expect(current_path).to eq(login_path)
 

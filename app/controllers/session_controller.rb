@@ -1,7 +1,4 @@
-class SessionsController <ApplicationController
-  def new
-  end
-
+class SessionController <ApplicationController
   def new
   end
 
@@ -13,9 +10,16 @@ class SessionsController <ApplicationController
     elsif user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.email}!"
-      redirect_to dashboard_index_path
+      redirect_to dashboard_index_path if current_user.user?
+      redirect_to admin_dashboard_path if current_user.admin?
     else
       flash[:error] = "The password provided is incorrect. Please try again."
       redirect_to login_path
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+end
