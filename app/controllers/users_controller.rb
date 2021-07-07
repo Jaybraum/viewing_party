@@ -15,8 +15,9 @@ class UsersController < ApplicationController
       user[:email] = user[:email].downcase
       new_user = User.create(user)
 
-      flash[:success] = "Welcome, #{new_user.email}!"
-      redirect_to dashboard_index_path
+      session[:user_id] = new_user.id
+      redirect_to dashboard_index_path if current_user.user?
+      redirect_to admin_dashboard_path if current_user.admin?
     end
   end
 

@@ -1,4 +1,4 @@
-<h1>Welcome </h1><br>
+<h1>Welcome <%= @current_user.email %></h1><br>
 
 <button><%= link_to "Discover Movies", movies_path, method: :get %></button><br><br><br>
 

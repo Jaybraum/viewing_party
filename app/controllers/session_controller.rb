@@ -9,7 +9,7 @@ class SessionController <ApplicationController
       redirect_to login_path
     elsif user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = "Welcome, #{user.email}!"
+      # flash[:success] = "Welcome, #{user.email}!"
       redirect_to dashboard_index_path if current_user.user?
       redirect_to admin_dashboard_path if current_user.admin?
     else
