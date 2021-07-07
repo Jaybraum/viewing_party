@@ -5,10 +5,10 @@ class UsersController < ApplicationController
 
   def create
     if !User.find_by(email: params[:user][:email]).nil?
-      flash[:error] = "This email is already associated with an account. Please log in."
+      flash[:error] = 'This email is already associated with an account. Please log in.'
       redirect_to register_path
     elsif params[:user][:password] != params[:user][:password_confirmation]
-      flash[:error] = "Passwords do not match! Please enter the same password twice."
+      flash[:error] = 'Passwords do not match! Please enter the same password twice.'
       redirect_to register_path
     else
       user = user_params
