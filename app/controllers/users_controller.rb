@@ -20,24 +20,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_form
-  end
-
-  def login
-    user = User.find_by(email: params[:email])
-    if user.nil?
-      flash[:error] = "The provided email is not associated with an account. Please register or try again."
-      redirect_to login_path
-    elsif user.authenticate(params[:password])
-      flash[:success] = "Welcome, #{user.email}!"
-      redirect_to dashboard_index_path
-    else
-      flash[:error] = "The password provided is incorrect. Please try again."
-      redirect_to login_path
-    end
-  end
-
-
   private
 
   def user_params
