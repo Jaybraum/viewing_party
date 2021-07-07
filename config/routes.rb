@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
 
   resources :dashboard, only: [:index]
+  resources :movies, only: [:index]
   #resources :users
 
 end
