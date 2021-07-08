@@ -1,7 +1,9 @@
+# require './config/application.yml'
+
 class APIService
   def self.connect(path)
     begin
-      validate_connection(Faraday.get(path))
+      validate_connection(Faraday.get(path + ENV['API_KEY']))
     end
   end
 
