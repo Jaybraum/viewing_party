@@ -1,0 +1,1 @@
+  MOVIE_PATH = 'https://api.themoviedb.org/3/discover/movie?api_key='
