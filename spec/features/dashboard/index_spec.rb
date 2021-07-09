@@ -37,10 +37,8 @@ RSpec.describe "Dashboard Index" do
   it "it has a form to add a new friend and tells you if the addition was a success" do
     user1 = User.create(email: 'bob', password: '123')
     user2 = User.create(email: 'sue', password: '123')
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
-    # What in the world is going on here? Why do I need to do this?
-    allow_any_instance_of(FriendshipsController).to receive(user_id).and_return(user1.id)
     allow_any_instance_of(DashboardController).to receive(:current_user).and_return(user1)
+    allow_any_instance_of(FriendshipsController).to receive(:current_user).and_return(user1)
 
     visit dashboard_index_path
 
@@ -55,9 +53,8 @@ RSpec.describe "Dashboard Index" do
   it "it does not allow you to add friends that dont exist" do
     user1 = User.create(email: 'bob', password: '123')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
-    # What in the world is going on here? Why do I need to do this?
-    allow_any_instance_of(FriendshipsController).to receive(user_id).and_return(user1)
     allow_any_instance_of(DashboardController).to receive(:current_user).and_return(user1)
+    allow_any_instance_of(FriendshipsController).to receive(:current_user).and_return(user1)
 
     visit dashboard_index_path
 
@@ -71,10 +68,8 @@ RSpec.describe "Dashboard Index" do
     user1 = User.create(email: 'bob', password: '123')
     user2 = User.create(email: 'sue', password: '123')
     Friendship.create!(follower: user1, followed: user2)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
-    # What in the world is going on here? Why do I need to do this?
-    allow_any_instance_of(FriendshipsController).to receive(user_id).and_return(user1.id)
     allow_any_instance_of(DashboardController).to receive(:current_user).and_return(user1)
+    allow_any_instance_of(FriendshipsController).to receive(:current_user).and_return(user1)
 
     visit dashboard_index_path
 
