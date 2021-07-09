@@ -1,8 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    # What in the world is going on here? Why do I need to do this?
     @current_user = current_user
-    # current_user = User.find(session[:user_id])
     desired_friend = User.find_by(email: params[:followed])
     if desired_friend.nil?
       flash[:error] = 'The provided email is not associated with an account. Please try again.'
