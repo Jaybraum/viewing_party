@@ -29,6 +29,10 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'faraday'
+  gem 'json'
 end
 
 group :development do
