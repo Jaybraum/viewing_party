@@ -1,11 +1,7 @@
-# mock_data = '[{"name":"Hannukah"},
-# {"name":"Dragon Boat Festival"},
-# {"name":"Kwanza"}]'
-# allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(double("response", status: 200, body: mock_data))
 require 'rails_helper'
 
-RSpec.describe APIService do
-  it 'returns movie data' do
+RSpec.describe MovieData do
+  it 'has data' do
     mock_response = {
       :adult=> false,
        :backdrop_path=> "/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg",
@@ -25,11 +21,16 @@ RSpec.describe APIService do
        :vote_average=> 8.2,
        :vote_count=> 2239
     }
+    #this can use VCR, for now we can comment out the mock data to check on the API
     allow(APIService).to receive(:connect).and_return(mock_response)
-    movie_data = APIService.connect(MOVIE_PATH)
+    movie_data = MovieData.new
+    expect(movie_data).to be_an_instance_of(MovieData)
+  end
 
-    expect(movie_data).to be_a(Hash)
-    expect(movie_data).to have_key(:adult)
-    expect(movie_data).to have_key(:backdrop_path)
+  xit 'lists all movies' do
+    movie_data = MovieData.new
+
+    expect(movie_data.top_forty).to be_an(Array)
+
   end
 end
