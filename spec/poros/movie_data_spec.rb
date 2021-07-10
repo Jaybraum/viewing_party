@@ -27,10 +27,9 @@ RSpec.describe MovieData do
     expect(movie_data).to be_an_instance_of(MovieData)
   end
 
-  xit 'lists all movies' do
+  it 'lists all movies' do
     movie_data = MovieData.new
 
     expect(movie_data.top_forty).to be_an(Array)
-
   end
 end
