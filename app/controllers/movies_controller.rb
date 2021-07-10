@@ -1,8 +1,15 @@
 class MoviesController < ApplicationController
   def index
     @current_user = current_user
-    require 'pry'; binding.pry
     @movie_data = MovieData.new
-    require 'pry'; binding.pry
+  end
+
+  def search
+    @found_movies = MovieData.new.search(params[:search])
+    # data = APIService.connect(MOVIE_PATH)
+    # movies = data[:results]
+    # @found_movies = movies.find do |movie|
+    #   movie[:original_title] == params[:search]
+    # end
   end
 end

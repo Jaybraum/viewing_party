@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#admin_dashboard'
   end
+
+  post '/search', to: 'movies#search'
 end
