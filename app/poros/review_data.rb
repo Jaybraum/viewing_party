@@ -1,20 +1,25 @@
 class ReviewData
   def initialize(movie_id)
-    @review_data = APIService.connect("https://api.themoviedb.org/3/movie/#{movie_id}/reviews?api_key=")
+    review_data = APIService.connect("https://api.themoviedb.org/3/movie/#{movie_id}/reviews?api_key=")
+    @reviews = review_data[:results]
   end
 
   def top_eight_reviews
     count = 0
     reviews = []
-    if @review_data[:results].count < 8
-      times_to_loop = @review_data[:results].count
-    else
-      times_to_loop = 8
-    end
+    times_to_loop = determine_times_to_loop
     times_to_loop.times do
-      reviews << [@review_data[:results][count][:author], @review_data[:results][count][:content]]
+      reviews << [@reviews[count][:author], @reviews[count][:content]]
       count += 1
     end
-    require "pry"; binding.pry
+    reviews
+  end
+
+  def determine_times_to_loop
+    if @reviews.count < 8
+      @reviews.count
+    else
+      8
+    end
   end
 end

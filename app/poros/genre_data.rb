@@ -3,16 +3,16 @@ class GenreData
     @genre_data = APIService.connect(GENRE_PATH)
   end
 
-  def format_genre
+  def format_genres
     @genre_data[:genres].each_with_object({}) do |genre, hash|
       hash[genre[:id]] = genre[:name]
     end
   end
 
-  def genre_string(movie)
-    formatted_genre = format_genre
+  def movie_genres(movie)
+    formatted_genres = format_genres
     movie[:genre_ids].map do |genre_id|
-      formatted_genre[genre_id]
+      formatted_genres[genre_id]
     end
   end
 end

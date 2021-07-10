@@ -12,4 +12,9 @@ class MoviesController < ApplicationController
     #   movie[:original_title] == params[:search]
     # end
   end
+
+  def show
+    # Replace this with params search once Jermaine finishes top/search movies views
+    @movie = @movie_data[:results].first
+  end
 end

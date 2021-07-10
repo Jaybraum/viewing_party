@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MovieData do
-  it 'has data' do
+  xit 'has data' do
     mock_response = {
       :adult=> false,
        :backdrop_path=> "/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg",
@@ -27,7 +27,7 @@ RSpec.describe MovieData do
     expect(movie_data).to be_an_instance_of(MovieData)
   end
 
-  it 'lists all movies' do
+  xit 'lists all movies' do
     movie_data = MovieData.new
 
     expect(movie_data.top_forty).to be_an(Array)

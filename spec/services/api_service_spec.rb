@@ -26,7 +26,7 @@ RSpec.describe APIService do
        :vote_count=> 2239
     }
     allow(APIService).to receive(:connect).and_return(mock_response)
-    movie_data = APIService.connect(MOVIE_PATH)
+    movie_data = APIService.connect(DISCOVER_PATH)
 
     expect(movie_data).to be_a(Hash)
     expect(movie_data).to have_key(:adult)
