@@ -29,10 +29,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
-  gem 'vcr'
-  gem 'webmock'
-  gem 'faraday'
-  gem 'json'
 end
 
 group :development do
@@ -47,6 +43,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  #gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
