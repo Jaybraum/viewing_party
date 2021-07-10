@@ -6,9 +6,15 @@ class ReviewData
   def top_eight_reviews
     count = 0
     reviews = []
-    10.times do
-      cast << [@review_data[:cast][count][:name], @review_data[:cast][count][:character]]
+    if @review_data[:results].count < 8
+      times_to_loop = @review_data[:results].count
+    else
+      times_to_loop = 8
+    end
+    times_to_loop.times do
+      reviews << [@review_data[:results][count][:author], @review_data[:results][count][:content]]
       count += 1
     end
+    require "pry"; binding.pry
   end
 end
