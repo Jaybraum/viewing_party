@@ -1,0 +1,49 @@
+<br>
+<section style="text-align: center;">
+  <h1>Details for "<%= @movie_details[:title] %>"</h1><br>
+
+  <section class="container">
+    <span><p>Vote Average: <%= @movie_details[:vote_average] %></p></span>
+    <span><p>Runtime: <%= @movie_details[:runtime] %></p></span>
+    <span><p>Genre(s): <% @movie_details[:genres].each do |genre| %>
+      <%= genre %>
+      <% end %>
+    </p></span>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Summary</h4>
+      <p><%= @movie_details[:summary] %>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Cast</h4>
+      <table style="margin-left: auto; margin-right: auto; text-align: center; width: 20%">
+        <tr>
+          <th>Actor</th>
+          <th>Playing Character</th>
+        </tr>
+      <p><% @movie_details[:cast].each do |actor| %>
+        <tr>
+          <td><%= actor[0] %>
+          <td><%= actor[1] %>
+        </tr>
+      <% end %>
+      </table>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Reviews</h4>
+      <p><% @movie_details[:reviews].each do |review| %>
+        <%= "Review Author: #{review[0]}" %><br><br>
+        <%= review[1] %><br>
+        <br>
+      <% end %>
+    </section>
+</section>

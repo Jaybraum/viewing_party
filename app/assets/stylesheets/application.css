@@ -96,3 +96,8 @@ footer {
   display: table;
   clear: both;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
