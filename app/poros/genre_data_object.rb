@@ -1,4 +1,4 @@
-class GenreData
+class GenreDataObject
   def initialize
     @genre_data = APIService.connect(GENRE_PATH)
   end
