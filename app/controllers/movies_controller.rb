@@ -6,19 +6,16 @@ class MoviesController < ApplicationController
 
   def search
     @found_movies = MovieData.new.search(params[:search])
-    # data = APIService.connect(MOVIE_PATH)
-    # movies = data[:results]
-    # @found_movies = movies.find do |movie|
-    #   movie[:original_title] == params[:search]
-    # end
   end
 
   def show
-    movies = MovieDataObject.new
+    # movies = MovieDataObject.new
 
-    # Replace this with params search once Jermaine finishes top/search movies views
-    movie = movies.top_forty.first
+    # # Replace this with params search once Jermaine finishes top/search movies views
+    # movie = movies.top_forty.first
 
-    @movie_details = movies.movie_details(movie)
+    # @movie_details = movies.movie_details(movie)
+
+    @movie = MovieDataFacade.new(params[:whatever])
   end
 end

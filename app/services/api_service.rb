@@ -5,6 +5,11 @@ class APIService
     self.validate_connection(response)
   end
 
+  def self.get_genres_json
+    response = Faraday.get(GENRE_PATH + ENV['API_KEY'])
+    self.validate_connection(response)
+  end
+
   def self.get_reviews_json(movie_id)
     response = Faraday.get("https://api.themoviedb.org/3/movie/#{movie_id}/reviews?api_key=" + ENV['API_KEY'])
     self.validate_connection(response)
