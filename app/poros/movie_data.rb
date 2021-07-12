@@ -16,6 +16,7 @@ class MovieData
   end
 
   def movie_details(movie)
+    require 'pry'; binding.pry
    {
       :title => movie[:title],
       :vote_average => movie[:vote_average],
