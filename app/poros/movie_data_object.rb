@@ -1,6 +1,6 @@
 require './config/initializers/constants'
 
-class MovieData
+class MovieDataObject
   def initialize
     @movies = APIService.connect(DISCOVER_PATH)[:results]
   end
@@ -23,9 +23,9 @@ class MovieData
   #     :runtime => APIService.connect("https://api.themoviedb.org/3/movie/#{movie[:id]}?api_key=")[:runtime],
   #     :genres => GenreData.new.movie_genres(movie),
   #     :summary => movie[:overview],
-  #     :cast => CastData.new(movie[:id]).top_ten_cast,
+  #     :cast => CastDataFacade.limited_cast,
   #     :reviews => ReviewData.new(movie[:id]).top_eight_reviews,
-  #   }
-  
+  # #   }
+
   end
 end

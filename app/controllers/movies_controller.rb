@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movies = MovieData.new
+    movies = MovieDataObject.new
 
     # Replace this with params search once Jermaine finishes top/search movies views
     movie = movies.top_forty.first
