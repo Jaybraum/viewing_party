@@ -1,10 +1,10 @@
 <br>
 <section style="text-align: center;">
   <h1>Details for "<%= @movie.title %>"</h1><br>
-  <%= form_with model: @viewing_party, method: :get, local: true do |form| %>
+  <%= form_with url: new_party_path, method: :get, local: true do |form| %>
     <%= form.hidden_field :movie_id, value: @movie.movie_id %>
     <%= form.submit 'Create Viewing Party for Movie' %>
-  <% end %>
+  <% end %><br>
 
   <section class="container">
     <span><p>Vote Average: <%= @movie.vote_average %></p></span>

@@ -1,3 +1,0 @@
-class ViewingParties < ApplicationRecord
-
-end
