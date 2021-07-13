@@ -1,8 +1,11 @@
 class APIService
 
-  def self.get_movies_json(movie_id)
-    response = Faraday.get("https://api.themoviedb.org/3/movie/#{movie_id}?" + ENV['API_KEY'])
+  def self.get_movies_json
+    response_1 = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + '&page=1')
+    response_2 = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + '&page=2')
     self.validate_connection(response)
+    
+
   end
 
   def self.get_top_rated_json

@@ -2,20 +2,17 @@ class MoviesDataFacade
 
   def self.get_movie_objects
     movies_pages = APIService.get_movies_json
-    require 'pry'; binding.pry
-    movies = []
-    movies_pages[:results].each do |page|
-      require 'pry'; binding.pry
-      page.map do |movie|
-       movies << MovieDataObject.new(movie)
-      end
+    require "pry"; binding.pry
+    @movies = []
+    movies_pages[:results].each do |movie|
+      @movies <<  MovieDataObject.new(movie)
     end
-    movies
-    require 'pry'; binding.pry
+    require "pry"; binding.pry
   end
 
   def self.find_movies_by_title(title)
-    @all_movies.find_all do |movie|
+    all_movies = self.get_movie_objects
+    all_movies.find_all do |movie|
       movie.title.downcase.include?(title)
     end
   end
