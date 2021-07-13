@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :dashboard, only: [:index]
-  resources :movies, only: [:index]
+  resources :movies, only: [:index, :show]
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#admin_dashboard'

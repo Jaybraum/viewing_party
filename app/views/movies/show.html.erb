@@ -1,0 +1,49 @@
+<br>
+<section style="text-align: center;">
+  <h1>Details for "<%= @movie.title %>"</h1><br>
+
+  <section class="container">
+    <span><p>Vote Average: <%= @movie.vote_average %></p></span>
+    <span><p>Runtime: <%= @movie.runtime %></p></span>
+    <span><p>Genre(s): <% @movie.genres.each do |genre| %>
+      <%= genre %>
+      <% end %>
+    </p></span>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Summary</h4>
+      <p><%= @movie.summary %>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Cast</h4>
+      <table style="margin-left: auto; margin-right: auto; text-align: center; width: 20%">
+        <tr>
+          <th>Actor</th>
+          <th>Playing Character</th>
+        </tr>
+      <p><% @movie.cast.each do |actor| %>
+        <tr>
+          <td><%= actor.real_name %>
+          <td><%= actor.character_name %>
+        </tr>
+      <% end %>
+      </table>
+    </section>
+
+    <hr>
+
+    <section>
+      <h4>Reviews</h4>
+      <p><% @movie.reviews.each do |review| %>
+        <%= "Review Author: #{review.author}" %><br><br>
+        <%= review.review %><br>
+        <br>
+      <% end %>
+    </section>
+</section>
