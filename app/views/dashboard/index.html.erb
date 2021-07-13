@@ -1,11 +1,35 @@
-<h1>Welcome <%= @current_user.email %>!</h1><br>
 
-<button><%= link_to "Discover Movies", movies_path, method: :get %></button><br><br><br>
 
+<div class="row">
+  <div class="column_left">
+  <br>
+  <h1>Welcome <%= @current_user.email %>!</h1><br>
+    <button><%= link_to "Discover Movies", movies_path, method: :get %></button><br><br><br>
+  </div>
+  <div class="column_right">
+    <br>
+    <%= form_with url: "/friendships", method: :post, local: true do |form| %>
+      <br><br>
+      <h6>Add New Friend By Email:</h6>
+      <%= form.text_field :followed %>
+      <%= form.submit 'Add'  %>
+    <% end %>
+  </div>
+</div >
 <div class="row">
   <div class="column_left">
     <h3>Viewing Parties</h3>
   </div>
+
   <div class="column_right">
-   <h3>Friends</h3></div>
+  <h3>Current Friends List</h3>
+   <% if @friends.empty? %>
+     <%= "You currently have no friends added." %>
+   <% else %>
+    <ul><% @friends.each do |friend| %>
+      <li><%= friend %></li>
+    <% end %></ul>
+   <% end %>
+  </div>
+
 </div>
