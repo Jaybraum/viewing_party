@@ -5,6 +5,11 @@ class APIService
     self.validate_connection(response)
   end
 
+  def self.movie_search_json(title)
+    response = Faraday.get(SEARCH_PATH + ENV['API_KEY'] + "&query=#{title}")
+    self.validate_connection(response)
+  end
+
   def self.get_movies_json(page_num)
     response = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + "&page=#{page_num}")
     self.validate_connection(response)

@@ -6,10 +6,12 @@ class MoviesDataFacade
   end
 
   def self.find_movies_by_title(title)
-    all_movies = self.get_movie_objects
-    all_movies.find_all do |movie|
-      movie.title.downcase.include?(title)
+    movies = APIService.movie_search_json(title)
+    all_movies = []
+    movies[:results].each do |movie|
+      all_movies << MovieSummaryDataObject.new(movie, self)
     end
+    all_movies
   end
 
   def self.get_top_movie_objects
