@@ -10,10 +10,14 @@
   <%= form.submit 'Search' %>
 <% end %>
 
-<% if !@movies.nil? %>
-  <% @movies.each do |movie| %>
-    <%= link_to "#{movie.title}", movie_path(movie.movie_id), method: :get %><br>
-    <%= "Vote Average #{movie.vote_average}" %><br>
-    <br>
-  <% end %>
-<% end %>
+<section class="top_40">
+  <ul>
+      <% if !@movies.nil? %>
+        <% @movies.each do |movie| %>
+          <%= link_to "#{movie.title}", movie_path(movie.movie_id), method: :get %><br>
+          <%= "Vote Average #{movie.vote_average}" %><br>
+          <br>
+      <% end %>
+    <% end %>
+ </ul>
+</section>

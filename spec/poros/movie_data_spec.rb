@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe MovieData do
+RSpec.describe MovieDetailsDataObject do
 
   it  'returns a list of movies' do
-    response_body = File.read('spec/fixtures/movie_data.json')
+    # response_body = File.read('spec/fixtures/movie_data.json')
+    #
+    # stub_request(:get, DISCOVER_PATH + ENV['API_KEY']).
+    #      to_return(status: 200, body: response_body, headers: {})
+    #
+    # movie_reviews = MovieData.new
 
-    stub_request(:get, DISCOVER_PATH + ENV['API_KEY']).
-         to_return(status: 200, body: response_body, headers: {})
-
-    movie_reviews = MovieData.new
-    # require 'pry'; binding.pry
 
     expect(movie_reviews.count).to eq(2)
     expect(movie_reviews[0][0]).to eq("garethmb")
