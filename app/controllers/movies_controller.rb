@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
 
 
   def show
+    require 'pry'; binding.pry
      @movie = MovieDataFacade.get_movie_objects.find(params[:title])
 
     # # Replace this with params search once Jermaine finishes top/search movies views

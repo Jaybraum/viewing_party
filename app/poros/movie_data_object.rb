@@ -5,12 +5,16 @@ class MovieDataObject
               :popularity,
               :title,
               :vote_average
-  def initialize(movies)
-    @genre_id = movies[:genre_ids]
-    @movie_id = movies[:id]
-    @movie_overview = movies[:genre_ids]
-    @popularity = movies[:popularity]
-    @title = movies[:title]
-    @vote_average = movies[:vote_average]
+  def initialize(movie)
+    require 'pry'; binding.pry
+    @genre_id = movie[:genre_ids]
+    @movie_id = movie[:id]
+    @movie_overview = movie[:genre_ids]
+    @popularity = movie[:popularity]
+    @title = movie[:title]
+    @vote_average = movie[:vote_average]
+    # cast
+    # runtime
+    # reviews
   end
 end
