@@ -1,6 +1,24 @@
 class MoviesDataFacade
 
-  # Add methods to create movies objects
+  def self.get_movie_objects
+    movies = APIService.get_movies_json[:results]
+    movies.map do |movie|
+      MovieDataObject.new(movie)
+    end
+  end
+
+  def self.find_movies_by_title(title)
+    get_movie_objects.find_all do |movie|
+      movie.title.downcase.include?(title)
+    end
+  end
+
+  def self.get_top_movie_objects
+    movies = APIService.get_top_rated_json[:results]
+    movies.map do |movie|
+      MovieDataObject.new(movie)
+    end
+  end
 
   def self.get_cast_objects(movie_id)
     cast = APIService.get_cast_json(movie_id)[:cast]

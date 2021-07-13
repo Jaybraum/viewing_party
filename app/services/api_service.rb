@@ -1,5 +1,15 @@
 class APIService
 
+  def self.get_movies_json
+    response = Faraday.get(DISCOVER_PATH + ENV['API_KEY'])
+    self.validate_connection(response)
+  end
+
+  def self.get_top_rated_json
+    response = Faraday.get(TOP_PATH + ENV['API_KEY'])
+    self.validate_connection(response)
+  end
+
   def self.get_cast_json(movie_id)
     response = Faraday.get("https://api.themoviedb.org/3/movie/#{movie_id}/credits?api_key=" + ENV['API_KEY'])
     self.validate_connection(response)

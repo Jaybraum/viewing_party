@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#admin_dashboard'
   end
 
-  post '/search', to: 'movies#search'
+  post '/search_movies', to: 'movies#search'
+  get '/search_top_20', to: 'movies#search_top'
 end
