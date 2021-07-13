@@ -41,8 +41,8 @@
     <section>
       <h4>Reviews</h4>
       <p><% @movie.reviews.each do |review| %>
-        <%= "Review Author: #{review[0]}" %><br><br>
-        <%= review[1] %><br>
+        <%= "Review Author: #{review.author}" %><br><br>
+        <%= review.review %><br>
         <br>
       <% end %>
     </section>

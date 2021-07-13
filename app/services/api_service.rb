@@ -1,16 +1,21 @@
 class APIService
 
-  def self.get_movies_json
-    response_1 = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + '&page=1')
-    response_2 = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + '&page=2')
+  def self.get_movie_details_json(movie_id)
+    response = Faraday.get("https://api.themoviedb.org/3/movie/#{movie_id}?api_key=" + ENV['API_KEY'])
     self.validate_connection(response)
-    
+  end
 
+  def self.get_movies_json(page_num)
+    response = Faraday.get(DISCOVER_PATH + ENV['API_KEY'] + "&page=#{page_num}")
+    self.validate_connection(response)
   end
 
   def self.get_top_rated_json
-    response = Faraday.get(TOP_PATH + ENV['API_KEY'])
-    self.validate_connection(response)
+    response1 = Faraday.get(TOP_PATH + ENV['API_KEY'] + "&page=1")
+    response2 = Faraday.get(TOP_PATH + ENV['API_KEY'] + "&page=2")
+    response1 = self.validate_connection(response1)
+    response2 = self.validate_connection(response2)
+    {:first => response1[:results], :second => response2[:results]}
   end
 
   def self.get_cast_json(movie_id)

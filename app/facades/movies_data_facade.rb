@@ -1,13 +1,8 @@
 class MoviesDataFacade
 
-  def self.get_movie_objects
-    movies_pages = APIService.get_movies_json
-    require "pry"; binding.pry
-    @movies = []
-    movies_pages[:results].each do |movie|
-      @movies <<  MovieDataObject.new(movie)
-    end
-    require "pry"; binding.pry
+  def self.get_movie_details_object(movie_id)
+    movie = APIService.get_movie_details_json(movie_id)
+    MovieDetailsDataObject.new(movie, self)
   end
 
   def self.find_movies_by_title(title)
@@ -18,10 +13,14 @@ class MoviesDataFacade
   end
 
   def self.get_top_movie_objects
-    movies = APIService.get_top_rated_json[:results]
-    @all_movies = movies.map do |movie|
-      MovieDataObject.new(movie)
+    movies_pages = APIService.get_top_rated_json
+    all_movies = []
+    movies_pages.each do |movies|
+      movies[1].each do |movie|
+        all_movies << MovieSummaryDataObject.new(movie, self)
+      end
     end
+    all_movies
   end
 
   def self.get_cast_objects(movie_id)
@@ -44,17 +43,13 @@ class MoviesDataFacade
 
   def self.get_movie_genres(movie)
     genre_objects = self.get_genre_objects
-    movie[:genre_ids].map do |genre_id|
-      count = 0
-      until genre_objects[count].id == genre_id
-        count += 1
-      end
-      genre_objects[count].name
+    movie[:genres].map do |genre|
+      genre[:name]
     end
   end
 
   def self.get_review_objects(movie_id)
-    all_reviews = APIService.get_reviews_json(movie_id)[:reviews]
+    all_reviews = APIService.get_reviews_json(movie_id)[:results]
     all_reviews.map do |review|
       ReviewDataObject.new(review)
     end
