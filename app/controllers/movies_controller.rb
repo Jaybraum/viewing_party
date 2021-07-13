@@ -11,5 +11,6 @@ class MoviesController < ApplicationController
 
   def show
      @movie = MoviesDataFacade.get_movie_details_object(params[:id])
+    # @viewing_party = ViewingParty.new
   end
 end
