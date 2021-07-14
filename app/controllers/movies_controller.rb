@@ -3,7 +3,9 @@ class MoviesController < ApplicationController
     @current_user = current_user
     if params[:commit] == "Search"
       @movies = MoviesDataFacade.find_movies_by_title(params[:search])
-      # build in flash here
+      if @movies.empty?
+        flash[:error] = 'There are no movies matching your search.'
+      end
     elsif params[:commit] == "Find Top Rated Movies"
       @movies = MoviesDataFacade.get_top_movie_objects
     end
