@@ -5,11 +5,17 @@ class MoviesDataFacade
     MovieDetailsDataObject.new(movie, self)
   end
 
+  def self.get_movie_title(movie_id)
+    movie = APIService.get_movie_details_json(movie_id)[:title]
+  end
+
   def self.find_movies_by_title(title)
-    movies = APIService.movie_search_json(title)
+    movies_pages = APIService.movie_search_json(title)
     all_movies = []
-    movies[:results].each do |movie|
-      all_movies << MovieSummaryDataObject.new(movie, self)
+    movies_pages.each do |movies|
+      movies[1].each do |movie|
+        all_movies << MovieSummaryDataObject.new(movie, self)
+      end
     end
     all_movies
   end

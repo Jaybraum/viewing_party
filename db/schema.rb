@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 2021_07_07_170924) do
     t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
+  create_table "parties", force: :cascade do |t|
+    t.bigint "host_id"
+    t.integer "movie_id"
+    t.date "event_date"
+    t.time "event_time"
+    t.integer "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["host_id"], name: "index_parties_on_host_id"
+  end
+
+  create_table "party_participants", force: :cascade do |t|
+    t.bigint "party_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_party_participants_on_party_id"
+    t.index ["user_id"], name: "index_party_participants_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -32,28 +52,9 @@ ActiveRecord::Schema.define(version: 2021_07_07_170924) do
     t.integer "role", default: 0
   end
 
-  create_table "viewing_parties", force: :cascade do |t|
-    t.bigint "host_id"
-    t.integer "movie_id"
-    t.date "event_date_time"
-    t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["host_id"], name: "index_viewing_parties_on_host_id"
-  end
-
-  create_table "viewing_party_participants", force: :cascade do |t|
-    t.bigint "viewing_party_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_viewing_party_participants_on_user_id"
-    t.index ["viewing_party_id"], name: "index_viewing_party_participants_on_viewing_party_id"
-  end
-
   add_foreign_key "friendships", "users", column: "followed_id"
   add_foreign_key "friendships", "users", column: "follower_id"
-  add_foreign_key "viewing_parties", "users", column: "host_id"
-  add_foreign_key "viewing_party_participants", "users"
-  add_foreign_key "viewing_party_participants", "viewing_parties"
+  add_foreign_key "parties", "users", column: "host_id"
+  add_foreign_key "party_participants", "parties"
+  add_foreign_key "party_participants", "users"
 end

@@ -6,8 +6,11 @@ class APIService
   end
 
   def self.movie_search_json(title)
-    response = Faraday.get(SEARCH_PATH + ENV['API_KEY'] + "&query=#{title}")
-    self.validate_connection(response)
+    response1 = Faraday.get(SEARCH_PATH + ENV['API_KEY'] + "&query=#{title}" + "&page=1")
+    response2 = Faraday.get(SEARCH_PATH + ENV['API_KEY'] + "&query=#{title}" + "&page=2")
+    response1 = self.validate_connection(response1)
+    response2 = self.validate_connection(response2)
+    {:first => response1[:results], :second => response2[:results]}
   end
 
   def self.get_movies_json(page_num)
@@ -47,10 +50,3 @@ class APIService
     end
   end
 end
-
-# def search
-#   response = Faraday.get(http:/api link) do |req|
-#     req.headers['X-API_KEY'] = ENV['PROPUBLICA_API_KEY']
-#   end
-#   json = JSON.parse(response.body, symbolize_names: true)
-# end

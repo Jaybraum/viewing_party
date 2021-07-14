@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/genre/movie/list?api_key=<api_key>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - c7d9fedacbe3a8b344029e563cad89b8cfd03d9e
+      X-Memc-Age:
+      - '14880'
+      X-Memc-Expires:
+      - '1696'
+      Date:
+      - Wed, 14 Jul 2021 10:28:40 GMT
+      Cache-Control:
+      - public, max-age=28800
+      Etag:
+      - W/"98d6f4fb3a0e0c77544a7277f32baebb"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - RefreshHit from cloudfront
+      Via:
+      - 1.1 1396f0307ab4835adf6e4163507d4c8a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - AMS54-C1
+      X-Amz-Cf-Id:
+      - XjJ-xMGey6HoHC_VFB5sHP8yiXGtIr_dYvMe1NTeVy_QFxUBGD0bng==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"genres":[{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":16,"name":"Animation"},{"id":35,"name":"Comedy"},{"id":80,"name":"Crime"},{"id":99,"name":"Documentary"},{"id":18,"name":"Drama"},{"id":10751,"name":"Family"},{"id":14,"name":"Fantasy"},{"id":36,"name":"History"},{"id":27,"name":"Horror"},{"id":10402,"name":"Music"},{"id":9648,"name":"Mystery"},{"id":10749,"name":"Romance"},{"id":878,"name":"Science
+        Fiction"},{"id":10770,"name":"TV Movie"},{"id":53,"name":"Thriller"},{"id":10752,"name":"War"},{"id":37,"name":"Western"}]}'
+  recorded_at: Wed, 14 Jul 2021 10:28:40 GMT
+recorded_with: VCR 6.0.0

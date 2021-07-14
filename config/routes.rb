@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
 
   resources :friendships, only: [:create]
+  resources :party, only: [:new, :create]
 end

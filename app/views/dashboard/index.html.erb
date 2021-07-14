@@ -1,5 +1,3 @@
-
-
 <div class="row">
   <div class="column_left">
   <br>
@@ -16,20 +14,34 @@
     <% end %>
   </div>
 </div >
+
 <div class="row">
   <div class="column_left">
-    <h3>Viewing Parties</h3>
+    <% if @parties_hosting.empty? %>
+      <%= "You're not currently hosting any viewing parties" %>
+    <% else %>
+      <h3>Viewing Parties You're Hosting</h3>
+      <%= render partial: 'viewing_party_index', locals: { data_set: @parties_hosting } %><br>
+    <% end %>
+
+    <br><br>
+
+    <% if @parties_participating.empty? %>
+      <%= "You're not currently invited to any viewing parties" %>
+    <% else %>
+        <h3>Viewing Parties You're Invited To</h3>
+        <%= render partial: 'viewing_party_index', locals: { data_set: @parties_participating } %><br>
+    <% end %>
   </div>
 
   <div class="column_right">
-  <h3>Current Friends List</h3>
-   <% if @friends.empty? %>
-     <%= "You currently have no friends added." %>
-   <% else %>
-    <ul><% @friends.each do |friend| %>
-      <li><%= friend %></li>
-    <% end %></ul>
-   <% end %>
+    <h3>Current Friends List</h3>
+    <% if @friends.empty? %>
+      <%= "You currently have no friends added." %>
+    <% else %>
+      <ul><% @friends.each do |friend| %>
+        <li><%= friend %></li>
+      <% end %></ul>
+    <% end %>
   </div>
-
 </div>

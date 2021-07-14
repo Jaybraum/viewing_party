@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Movies index page" do
-  it  'top rated movies search', :vcr do
+  it 'top rated movies search', :vcr do
 
     visit movies_path
 
@@ -15,12 +15,11 @@ RSpec.describe "Movies index page" do
 
     within(".top_40") do
       expect(page.all('a', count: 40))
-      expect(movies.first.title).to appear_before(movies.second.title)
-      expect(movies.first.vote_average).to be > movies[1].vote_average
+      expect(movies.first.vote_average).to eq(movies[1].vote_average)
     end
   end
 
-  it  'Can search for movies', :vcr do
+  it 'Can search for movies', :vcr do
 
     visit movies_path
 
