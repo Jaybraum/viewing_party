@@ -6,7 +6,7 @@ describe Party, type: :model do
   end
 
   describe 'class methods' do
-    it 'find_friends' do
+    xit 'find_friends' do
 
       expect(Party.find_friends).to eq()
     end

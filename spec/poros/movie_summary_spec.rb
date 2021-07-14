@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MovieSummaryDataObject do
   describe 'happy path' do
     it "builds a movie summary object" do
-    VCR.insert_cassette('builds_a_movie_details_object')
+    VCR.insert_cassette('builds_a_movie_summary_object')
     id = 588228
 
     movie_data = APIService.get_movie_details_json(id)

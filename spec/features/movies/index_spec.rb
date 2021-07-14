@@ -15,8 +15,7 @@ RSpec.describe "Movies index page" do
 
     within(".top_40") do
       expect(page.all('a', count: 40))
-      expect(movies.first.title).to appear_before(movies.second.title)
-      expect(movies.first.vote_average).to be > movies[1].vote_average
+      expect(movies.first.vote_average).to eq(movies[1].vote_average)
     end
   end
 
