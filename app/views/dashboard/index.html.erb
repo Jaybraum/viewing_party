@@ -23,60 +23,18 @@
       <%= "You're not currently hosting any viewing parties" %>
     <% else %>
       <h3>Viewing Parties You're Hosting</h3>
-      <table style="width: 75%">
-          <tr>
-            <th>Movie</th>
-            <th>Event Date</th>
-            <th>Event Time</th>
-            <th>Host</th>
-            <th>Participants</th>
-          </tr>
-        <% @parties_hosting.each do |party| %>
-          <tr>
-            <td><%= link_to party.get_title, movie_path(party.movie_id), method: :get %></td>
-            <td><%= party.event_date.strftime("%m/%d/%Y") %></td>
-            <td><%= party.event_time.strftime("%I:%M %p") %></td>
-            <td><%= party.get_host %></td>
-            <td><ul><% party.get_participants.each do |participant| %>
-              <li><%= participant %></li>
-              <% end %></ul></td>
-          </tr>
-        <% end %>
-        </table>
-      <% end %>
-      <br>
-      <br>
+      <%= render partial: 'viewing_party_index', locals: { data_set: @parties_hosting } %><br>
+    <% end %>
+    
+    <br><br>
 
       <% if @parties_participating.empty? %>
       <%= "You're not currently invited to any viewing parties" %>
         <% else %>
           <h3>Viewing Parties You're Invited To</h3>
-          <table style="width: 75%">
-              <tr>
-                <th>Movie</th>
-                <th>Event Date</th>
-                <th>Event Time</th>
-                <th>Host</th>
-                <th>Participants</th>
-              </tr>
-            <% @parties_participating.each do |party| %>
-              <tr>
-                <td><%= link_to party.get_title, movie_path(party.movie_id), method: :get %></td>
-                <td><%= party.event_date.strftime("%m/%d/%Y") %></td>
-                <td><%= party.event_time.strftime("%I:%M %p") %></td>
-                <td><%= party.get_host %></td>
-                <td><ul><% party.get_participants.each do |participant| %>
-                  <% if participant == @current_user.email %>
-                    <b><li><%= participant %></li></b>
-                  <% else %>
-                       <li><%= participant %></li>
-                  <% end %>
-                <% end %></ul></td>
-              </tr>
-            <% end %>
-            </table>
-          <% end %>
-          </div>
+          <%= render partial: 'viewing_party_index', locals: { data_set: @parties_participating } %><br>
+        <% end %>
+      </div>
 
           <div class="column_right">
           <h3>Current Friends List</h3>
