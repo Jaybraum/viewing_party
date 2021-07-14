@@ -18,6 +18,15 @@ RSpec.describe MoviesDataFacade do
       expect(details.genres).to be_a(Array)
     end
 
+    it 'gets movie title by id' do
+      details = ''
+
+      details = get_movie_title(588228)
+      require "pry"; binding.pry
+      expect(details).to be_an(MovieDetailsDataObject)
+      expect(details.movie_id).to be_an(Integer)
+    end
+
     it "find movie by title" do
       movie = ''
       title = 'Luca'

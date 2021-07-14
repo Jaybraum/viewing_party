@@ -18,12 +18,13 @@ RSpec.describe APIService do
     data = APIService.movie_search_json(title)
 
     expect(data).to be_a(Hash)
-    expect(data).to have_key(:results)
-    expect(data[:results][0]).to be_a(Hash)
-    expect(data[:results].length).to eq(20)
-    expect(data[:results][0][:title]).to be_a(String)
-    expect(data[:results][0][:popularity]).to be_a(Float)
-    expect(data[:results][0][:id]).to be_a(Integer)
+    expect(data).to have_key(:first)
+    expect(data[:first][0]).to be_a(Hash)
+    expect(data[:first].length).to eq(20)
+    expect(data[:second].length).to eq(20)
+    expect(data[:first][0][:title]).to be_a(String)
+    expect(data[:first][0][:popularity]).to be_a(Float)
+    expect(data[:first][0][:id]).to be_a(Integer)
   end
 
   it 'returns movies', :vcr do
