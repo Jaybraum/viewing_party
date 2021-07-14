@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe MoviesDataFacade do
   describe 'methods' do
     it "gets movie details" do
-      details = ''
 
       VCR.insert_cassette('builds_a_movie_details_object')
       details = MoviesDataFacade.get_movie_details_object(588228)
@@ -19,12 +18,10 @@ RSpec.describe MoviesDataFacade do
     end
 
     it 'gets movie title by id' do
-      details = ''
 
-      details = get_movie_title(588228)
-      require "pry"; binding.pry
-      expect(details).to be_an(MovieDetailsDataObject)
-      expect(details.movie_id).to be_an(Integer)
+      details = MoviesDataFacade.get_movie_title(588228)
+
+      expect(details).to be_an(String)
     end
 
     it "find movie by title" do
@@ -41,7 +38,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "gets top movie objects" do
-      top_40 = ''
       id = 588228
 
       top_40 = MoviesDataFacade.get_top_movie_objects
@@ -52,7 +48,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "gets cast objects" do
-      cast_data = ''
       id = 588228
 
       VCR.insert_cassette('builds_a_cast_data_object')
@@ -66,7 +61,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "limits the amount of cast data" do
-      cast_data = ''
       id = 588228
 
       cast_data = MoviesDataFacade.limited_cast(id)
@@ -79,7 +73,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "gets genre objects" do
-      genre_data = ''
 
       VCR.insert_cassette('builds_a_genre_object')
       genre_data = MoviesDataFacade.get_genre_objects
@@ -91,7 +84,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "gets movie genres" do
-      genre_data = ''
       movie = APIService.get_movie_details_json(588228)
 
       genre_data = MoviesDataFacade.get_movie_genres(movie)
@@ -101,7 +93,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "gets review objects" do
-      review_data = ''
       id = 588228
 
       VCR.insert_cassette('builds_a_review_data_object')
@@ -115,7 +106,6 @@ RSpec.describe MoviesDataFacade do
     end
 
     it "limits amount of review objects" do
-      review_data = ''
       id = 588228
 
       review_data = MoviesDataFacade.limited_reviews(id)
