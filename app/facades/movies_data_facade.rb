@@ -5,7 +5,7 @@ class MoviesDataFacade
     MovieDetailsDataObject.new(movie, self)
   end
 
-  def get_movie_title(movie_id)
+  def self.get_movie_title(movie_id)
     movie = APIService.get_movie_details_json(movie_id)[:title]
   end
 

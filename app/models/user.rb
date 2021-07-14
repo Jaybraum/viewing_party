@@ -13,4 +13,13 @@ class User < ApplicationRecord
     all_party_ids = parties_hosting + parties_participating
     Party.distinct.where(id: all_party_ids)
   end
+
+  def parties_hosting
+    Party.where(host_id: self.id)
+  end
+
+  def parties_participating
+    party_ids = PartyParticipant.where(user_id: self.id).pluck(:party_id)
+    Party.distinct.where(id: party_ids)
+  end
 end
