@@ -1,0 +1,24 @@
+ <table style="width: 75%">
+  <tr>
+    <th>Movie</th>
+    <th>Event Date</th>
+    <th>Event Time</th>
+    <th>Host</th>
+    <th>Participants</th>
+  </tr>
+  <% data_set.each do |party| %>
+    <tr>
+      <td><%= link_to party.get_title, movie_path(party.movie_id), method: :get %></td>
+      <td><%= party.event_date.strftime("%m/%d/%Y") %></td>
+      <td><%= party.event_time.strftime("%I:%M %p") %></td>
+      <td><%= party.get_host %></td>
+      <td><ul><% party.get_participants.each do |participant| %>
+        <% if participant == @current_user.email %>
+          <b><li><%= participant %></li></b>
+        <% else %>
+              <li><%= participant %></li>
+        <% end %>
+      <% end %></ul></td>
+    </tr>
+    <% end %>
+  </table>
