@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/588228?api_key=<api_key>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 14 Jul 2021 11:13:38 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - 854bf4d58a198ef7a3c6dd1c23dad2f40aebf5bf
+      X-Memc-Age:
+      - '8418'
+      X-Memc-Expires:
+      - '6749'
+      Etag:
+      - W/"af85dcf985d55a895c9ccfa76d4f2e6b"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 0f65f9aac16e53eeb77d85b7c23a21c2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - AMS1-C1
+      X-Amz-Cf-Id:
+      - CskXvm4cNl1uLua6bi0JWOwo3HW9HVjOzD5bWkp92UzhPDENh6GN1Q==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"adult":false,"backdrop_path":"/yizL4cEKsVvl17Wc1mGEIrQtM2F.jpg","belongs_to_collection":{"id":848922,"name":"The
+        Tomorrow War Collection","poster_path":null,"backdrop_path":null},"budget":0,"genres":[{"id":28,"name":"Action"},{"id":878,"name":"Science
+        Fiction"}],"homepage":"https://www.amazon.com/dp/B093CQZ2SM","id":588228,"imdb_id":"tt9777666","original_language":"en","original_title":"The
+        Tomorrow War","overview":"The world is stunned when a group of time travelers
+        arrive from the year 2051 to deliver an urgent message: Thirty years in the
+        future, mankind is losing a global war against a deadly alien species. The
+        only hope for survival is for soldiers and civilians from the present to be
+        transported to the future and join the fight. Among those recruited is high
+        school teacher and family man Dan Forester. Determined to save the world for
+        his young daughter, Dan teams up with a brilliant scientist and his estranged
+        father in a desperate quest to rewrite the fate of the planet.","popularity":5789.631,"poster_path":"/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg","production_companies":[{"id":82819,"logo_path":"/5Z8WWr0Lf1tInVWwJsxPP0uMz9a.png","name":"Skydance
+        Media","origin_country":"US"},{"id":423,"logo_path":"/uvA6e2O31qaonsbYd8tjvgqmNXh.png","name":"Phantom
+        Four","origin_country":"US"},{"id":125000,"logo_path":null,"name":"Lit Entertainment
+        Group","origin_country":"US"},{"id":20580,"logo_path":"/tkFE81jJIqiFYPP8Tho57MXRQEx.png","name":"Amazon
+        Studios","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United
+        States of America"}],"release_date":"2021-06-30","revenue":0,"runtime":138,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"The
+        fight for tomorrow begins today.","title":"The Tomorrow War","video":false,"vote_average":8.3,"vote_count":2250}'
+  recorded_at: Wed, 14 Jul 2021 11:13:38 GMT
+recorded_with: VCR 6.0.0
