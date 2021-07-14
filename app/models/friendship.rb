@@ -4,6 +4,6 @@ class Friendship < ApplicationRecord
 
   def self.users_friends(user)
     friend_ids = where(follower_id: user.id).pluck(:followed_id)
-    friend_names = User.where(id: friend_ids).pluck(:email)
+    User.where(id: friend_ids)
   end
 end
