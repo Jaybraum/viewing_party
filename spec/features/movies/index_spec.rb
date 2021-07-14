@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Movies index page" do
-  it  'top rated movies search', :vcr do
+  it 'top rated movies search', :vcr do
 
     visit movies_path
 
@@ -20,7 +20,7 @@ RSpec.describe "Movies index page" do
     end
   end
 
-  it  'Can search for movies', :vcr do
+  it 'Can search for movies', :vcr do
 
     visit movies_path
 
