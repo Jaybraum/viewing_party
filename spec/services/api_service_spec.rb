@@ -1,35 +1,88 @@
-# mock_data = '[{"name":"Hannukah"},
-# {"name":"Dragon Boat Festival"},
-# {"name":"Kwanza"}]'
-# allow_any_instance_of(Faraday::Connection).to receive(:get).and_return(double("response", status: 200, body: mock_data))
 require 'rails_helper'
 
 RSpec.describe APIService do
-  it 'returns movie data' do
-    mock_response = {
-      :adult=> false,
-       :backdrop_path=> "/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg",
-       :genre_ids=> [16, 35, 10751, 14],
-       :id=> 508943,
-       :original_language=> "en",
-       :original_title=> "Luca",
-       :overview=> "Luca and his best friend Alberto experience an unforgettable
-                    summer on the Italian Riviera. But all the fun is threatened
-                    by a deeply-held secret: they are sea monsters from another
-                    world just below the water’s surface.",
-       :popularity=> 4280.651,
-       :poster_path=> "/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
-       :release_date=> "2021-06-17",
-       :title=> "Luca",
-       :video=> false,
-       :vote_average=> 8.2,
-       :vote_count=> 2239
-    }
-    allow(APIService).to receive(:connect).and_return(mock_response)
-    movie_data = APIService.connect(DISCOVER_PATH)
+  it 'returns movie details', :vcr do
+    movie_id = 588228
 
-    expect(movie_data).to be_a(Hash)
-    expect(movie_data).to have_key(:adult)
-    expect(movie_data).to have_key(:backdrop_path)
+    details = APIService.get_movie_details_json(movie_id)
+
+    expect(details).to be_a(Hash)
+    expect(details[:title]).to be_a(String)
+    expect(details[:popularity]).to be_a(Float)
+    expect(details[:id]).to be_a(Integer)
+  end
+
+  it 'returns movie search', :vcr do
+    title = 'Luca'
+
+    data = APIService.movie_search_json(title)
+
+    expect(data).to be_a(Hash)
+    expect(data).to have_key(:results)
+    expect(data[:results][0]).to be_a(Hash)
+    expect(data[:results].length).to eq(20)
+    expect(data[:results][0][:title]).to be_a(String)
+    expect(data[:results][0][:popularity]).to be_a(Float)
+    expect(data[:results][0][:id]).to be_a(Integer)
+  end
+
+  it 'returns movies', :vcr do
+    page_num = 1
+
+    data = APIService.get_movies_json(page_num)
+
+    expect(data).to be_a(Hash)
+    expect(data).to have_key(:results)
+    expect(data[:results][0]).to be_a(Hash)
+    expect(data[:results].length).to eq(20)
+    expect(data[:results][0][:title]).to be_a(String)
+    expect(data[:results][0][:popularity]).to be_a(Float)
+    expect(data[:results][0][:id]).to be_a(Integer)
+  end
+
+  it 'returns top 40 movies', :vcr do
+
+    data = APIService.get_top_rated_json
+
+    expect(data).to be_a(Hash)
+    expect(data).to have_key(:first)
+    expect(data[:first][0]).to be_a(Hash)
+    expect(data[:first].length).to eq(20)
+    expect(data[:second].length).to eq(20)
+    expect(data[:first][0][:title]).to be_a(String)
+    expect(data[:first][0][:popularity]).to be_a(Float)
+    expect(data[:first][0][:id]).to be_a(Integer)
+  end
+
+  it 'returns movie cast', :vcr do
+    movie_id = 588228
+
+    details = APIService.get_cast_json(movie_id)
+
+    expect(details).to be_a(Hash)
+    expect(details).to have_key(:cast)
+    expect(details[:cast][0][:name]).to be_a(String)
+    expect(details[:cast][0][:character]).to be_a(String)
+  end
+
+  it 'returns movie genres', :vcr do
+
+    details = APIService.get_genres_json
+
+    expect(details).to be_a(Hash)
+    expect(details).to have_key(:genres)
+    expect(details[:genres][0][:id]).to be_a(Integer)
+    expect(details[:genres][0][:name]).to be_a(String)
+  end
+
+  it 'returns movie reviews', :vcr do
+    movie_id = 588228
+
+    details = APIService.get_reviews_json(movie_id)
+
+    expect(details).to be_a(Hash)
+    expect(details).to have_key(:results)
+    expect(details[:results][0][:author]).to be_a(String)
+    expect(details[:results][0][:content]).to be_a(String)
   end
 end

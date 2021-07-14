@@ -47,10 +47,3 @@ class APIService
     end
   end
 end
-
-# def search
-#   response = Faraday.get(http:/api link) do |req|
-#     req.headers['X-API_KEY'] = ENV['PROPUBLICA_API_KEY']
-#   end
-#   json = JSON.parse(response.body, symbolize_names: true)
-# end

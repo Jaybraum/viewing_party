@@ -50,13 +50,15 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 0f65f9aac16e53eeb77d85b7c23a21c2.cloudfront.net (CloudFront)
+      - 1.1 e10153740ff95eb4d0c9f3172baeb43e.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - AMS1-C1
       X-Amz-Cf-Id:
-      - CskXvm4cNl1uLua6bi0JWOwo3HW9HVjOzD5bWkp92UzhPDENh6GN1Q==
+      - PpX7yyR8G8KVLO56k9WLftNP70b27YW232npzNFKSal1P6YPKOBnpw==
+      Age:
+      - '12390'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":"/yizL4cEKsVvl17Wc1mGEIrQtM2F.jpg","belongs_to_collection":{"id":848922,"name":"The
@@ -76,5 +78,5 @@ http_interactions:
         Studios","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"2021-06-30","revenue":0,"runtime":138,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Released","tagline":"The
         fight for tomorrow begins today.","title":"The Tomorrow War","video":false,"vote_average":8.3,"vote_count":2250}'
-  recorded_at: Wed, 14 Jul 2021 11:13:38 GMT
+  recorded_at: Wed, 14 Jul 2021 14:40:08 GMT
 recorded_with: VCR 6.0.0
