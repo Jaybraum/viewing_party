@@ -22,4 +22,9 @@ class User < ApplicationRecord
     party_ids = PartyParticipant.where(user_id: self.id).pluck(:party_id)
     Party.distinct.where(id: party_ids)
   end
+
+  def get_friends
+    friend_ids = Friendship.where(follower_id: self.id).pluck(:followed_id)
+    User.where(id: friend_ids).pluck(:email)
+  end
 end
