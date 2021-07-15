@@ -1,25 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe "movies show page" do
+  before :each do
+    user = User.new(email: 'w', password: 'w')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-  xit "displays the item and its attributes", :vcr do
+    visit movie_path(588228)
+  end
 
-    movies = MovieData.new
-    movie_details = movies.movie_details(movie)
+  describe "Page details" do
+    VCR.insert_cassette('builds_a_movie_details_object')
+    it 'displays the movie title' do
+      expect(page).to have_content('The Tomorrow War')
+    end
 
-    visit "/movies/58828"
+    it 'movie details' do
+      expect(page).to have_content('Vote Average: 8.3')
+      expect(page).to have_content('Runtime: 138 min')
+      expect(page).to have_content('Genre(s): Action Science Fiction')
+     end
 
-    expect(page).to have_content(movie_details[:title])
-    expect(page).to have_content(movie_details[:vote_average])
-    expect(page).to have_content(movie_details[:runtime])
-    expect(page).to have_content("Genre(s): Action Science Fiction")
-    expect(page).to have_content(movie_details[:summary])
-    expect(page).to have_content(movie_details[:cast][0][0])
-    expect(page).to have_content(movie_details[:cast][0][1])
-    expect(page).to have_content(movie_details[:cast][9][0])
-    expect(page).to have_content(movie_details[:cast][9][1])
-    expect(page).to have_content(movie_details[:reviews][0][0])
-    expect(page).to have_content("on the verge of extinction.")
-    expect(page).to have_content("The film features some good FX")
+    it 'reviews' do
+      expect(page).to have_content("Review Author: garethmb")
+      expect(page).to have_content("Review Author: msbreviews")
+      expect(page).to have_content("Review Author: Kamurai")
+     end
+   end
+
+   describe "Page details" do
+    it "has a link to create a viewing party" do
+      expect(page).to have_button("Create Viewing Party for The Tomorrow War")
+
+      click_on "Create Viewing Party for The Tomorrow War"
+
+      expect(current_path).to eq(new_party_path)
+    end
   end
 end
