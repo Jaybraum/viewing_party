@@ -13,10 +13,10 @@
       <span style="text-align: right">
       <% if @current_user.nil? %>
         <a class="active" href="/login">Login</a>
+        <a class="active" href="/register">Register</a>
       <% else %>
         <a class="active" data-method="delete" href="/logout">Logout</a>
       <% end %>
-      <a class="active" href="/register">Register</a>
       </span>
     </div>
     <div class="col-sm", style='padding-left: 25px'>

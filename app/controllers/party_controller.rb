@@ -13,7 +13,7 @@ class PartyController < ApplicationController
 
   def new
     @current_user = current_user
-    @friendships = Friendship.users_friends(@current_user)
+    @friendships = @current_user.get_friends
     @movie = MoviesDataFacade.get_movie_details_object(params[:movie_id])
     @party = Party.new
   end
