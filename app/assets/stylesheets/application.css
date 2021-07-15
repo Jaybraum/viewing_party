@@ -101,3 +101,12 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
+table, th {
+  text-align: left;
+  vertical-align: text-top;
+  border: 1px solid black;
+}
+td {
+  border: 1px dotted black;
+}

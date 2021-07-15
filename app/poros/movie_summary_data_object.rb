@@ -3,7 +3,7 @@ class MovieSummaryDataObject
               :title,
               :vote_average
 
-  def initialize(movie, movie_data_facade)
+  def initialize(movie, _movie_data_facade)
     @movie_id = movie[:id]
     @title = movie[:title]
     @vote_average = movie[:vote_average]

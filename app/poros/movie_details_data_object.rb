@@ -15,7 +15,7 @@ class MovieDetailsDataObject
     @vote_average = movie[:vote_average]
     @cast = movie_data_facade.limited_cast(@movie_id)
     @reviews = movie_data_facade.limited_reviews(@movie_id)
-    @genres = movie_data_facade.get_movie_genres(movie)
+    @genres = movie_data_facade.grab_movie_genres(movie)
     @runtime = movie[:runtime]
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe "Movies index page" do
 
     visit movies_path
 
-    movies = MoviesDataFacade.get_top_movie_objects
+    movies = MoviesDataFacade.generate_top_movie_objects
 
     click_button 'Find Top Rated Movies'
 

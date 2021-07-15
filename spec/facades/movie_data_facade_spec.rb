@@ -5,7 +5,7 @@ RSpec.describe MoviesDataFacade do
     it "gets movie details" do
 
       VCR.insert_cassette('builds_a_movie_details_object')
-      details = MoviesDataFacade.get_movie_details_object(588228)
+      details = MoviesDataFacade.generate_movie_details_object(588228)
 
 
       expect(details).to be_an(MovieDetailsDataObject)
@@ -19,7 +19,7 @@ RSpec.describe MoviesDataFacade do
 
     it 'gets movie title by id' do
 
-      details = MoviesDataFacade.get_movie_title(588228)
+      details = MoviesDataFacade.grab_movie_title(588228)
 
       expect(details).to be_an(String)
     end
@@ -40,7 +40,7 @@ RSpec.describe MoviesDataFacade do
     it "gets top movie objects" do
       id = 588228
 
-      top_40 = MoviesDataFacade.get_top_movie_objects
+      top_40 = MoviesDataFacade.generate_top_movie_objects
 
       expect(top_40).to be_an(Array)
       expect(top_40[0]).to be_an(MovieSummaryDataObject)
@@ -52,7 +52,7 @@ RSpec.describe MoviesDataFacade do
 
       VCR.insert_cassette('builds_a_cast_data_object')
 
-      cast_data = MoviesDataFacade.get_cast_objects(id)
+      cast_data = MoviesDataFacade.generate_cast_objects(id)
 
       expect(cast_data).to be_an(Array)
       expect(cast_data[0]).to be_a(CastDataObject)
@@ -75,7 +75,7 @@ RSpec.describe MoviesDataFacade do
     it "gets genre objects" do
 
       VCR.insert_cassette('builds_a_genre_object')
-      genre_data = MoviesDataFacade.get_genre_objects
+      genre_data = MoviesDataFacade.generate_genre_objects
 
       expect(genre_data).to be_an(Array)
       expect(genre_data[0]).to be_an(GenreDataObject)
@@ -86,7 +86,7 @@ RSpec.describe MoviesDataFacade do
     it "gets movie genres" do
       movie = APIService.get_movie_details_json(588228)
 
-      genre_data = MoviesDataFacade.get_movie_genres(movie)
+      genre_data = MoviesDataFacade.grab_movie_genres(movie)
 
       expect(genre_data).to be_an(Array)
       expect(genre_data[0]).to be_a(String)
@@ -97,7 +97,7 @@ RSpec.describe MoviesDataFacade do
 
       VCR.insert_cassette('builds_a_review_data_object')
 
-      review_data = MoviesDataFacade.get_review_objects(id)
+      review_data = MoviesDataFacade.generate_review_objects(id)
 
       expect(review_data).to be_an(Array)
       expect(review_data[0]).to be_a(ReviewDataObject)
