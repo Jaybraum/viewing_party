@@ -2,14 +2,12 @@
 
 <section id="new_part_form" style="width: 50%">
   <%= bootstrap_form_with url: "/party", method: :post, local: true do |form| %>
-    <%= form.number_field :duration, label: 'Duration of Party (minutes)', value: @movie.runtime %>
+    <%= form.number_field :duration, label: 'Duration of Party (minutes)', value: @movie.runtime, min: @movie.runtime %>
     <%= form.date_field :event_date, label: 'Event Date', value: Time.now.strftime('%Y-%m-%d') %>
-    <%= form.time_field :event_time, label: 'Event Time'%>
-    <label>Invite Friends</label>
-    <% @friendships.each do |friend| %>
-      <%= form.check_box friend %>
-    <% end %>
+    <%= form.time_field :event_time, label: 'Event Time', required: true%>
+    <%= form.collection_check_boxes(:invitees, @friendships, :email, :email ) %>
     <%= form.hidden_field :movie_id, value: @movie.movie_id %><br>
+    <%= form.hidden_field :host_id, value: @current_user.id %><br>
     <%= form.submit 'Create Party' %>
   <% end %>
 </section>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/login', to: 'session#new'
   post '/login', to: 'session#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'session#destroy'
 
   resources :dashboard, only: [:index]
   resources :movies, only: [:index, :show]

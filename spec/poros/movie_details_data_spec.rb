@@ -5,7 +5,7 @@ RSpec.describe MovieDetailsDataObject do
     it "builds a movie details object", :vcr do
     id = 588228
 
-    movie_data = APIService.get_movie_details_json(id)
+    movie_data = APIService.grab_movie_details_json(id)
     movie_data_facade = MoviesDataFacade
 
     movie_details = MovieDetailsDataObject.new(movie_data, movie_data_facade)

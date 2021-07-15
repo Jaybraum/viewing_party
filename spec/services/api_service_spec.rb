@@ -4,7 +4,7 @@ RSpec.describe APIService do
   it 'returns movie details', :vcr do
     movie_id = 588228
 
-    details = APIService.get_movie_details_json(movie_id)
+    details = APIService.grab_movie_details_json(movie_id)
 
     expect(details).to be_a(Hash)
     expect(details[:title]).to be_a(String)
@@ -30,7 +30,7 @@ RSpec.describe APIService do
   it 'returns movies', :vcr do
     page_num = 1
 
-    data = APIService.get_movies_json(page_num)
+    data = APIService.grab_movies_json(page_num)
 
     expect(data).to be_a(Hash)
     expect(data).to have_key(:results)
@@ -43,7 +43,7 @@ RSpec.describe APIService do
 
   it 'returns top 40 movies', :vcr do
 
-    data = APIService.get_top_rated_json
+    data = APIService.grab_top_rated_json
 
     expect(data).to be_a(Hash)
     expect(data).to have_key(:first)
@@ -58,7 +58,7 @@ RSpec.describe APIService do
   it 'returns movie cast', :vcr do
     movie_id = 588228
 
-    details = APIService.get_cast_json(movie_id)
+    details = APIService.grab_cast_json(movie_id)
 
     expect(details).to be_a(Hash)
     expect(details).to have_key(:cast)
@@ -68,7 +68,7 @@ RSpec.describe APIService do
 
   it 'returns movie genres', :vcr do
 
-    details = APIService.get_genres_json
+    details = APIService.grab_genres_json
 
     expect(details).to be_a(Hash)
     expect(details).to have_key(:genres)
@@ -79,7 +79,7 @@ RSpec.describe APIService do
   it 'returns movie reviews', :vcr do
     movie_id = 588228
 
-    details = APIService.get_reviews_json(movie_id)
+    details = APIService.grab_reviews_json(movie_id)
 
     expect(details).to be_a(Hash)
     expect(details).to have_key(:results)

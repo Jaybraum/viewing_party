@@ -10,14 +10,13 @@
 
   <body>
     <div class="topnav">
-     <%# <%= image_tag('paw_print.png', id: 'main-logo') %>
       <span style="text-align: right">
       <% if @current_user.nil? %>
         <a class="active" href="/login">Login</a>
+        <a class="active" href="/register">Register</a>
       <% else %>
-        <a class="active" href="/logout">Logout</a>
+        <a class="active" data-method="delete" href="/logout">Logout</a>
       <% end %>
-      <a class="active" href="/register">Register</a>
       </span>
     </div>
     <div class="col-sm", style='padding-left: 25px'>
