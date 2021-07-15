@@ -10,7 +10,7 @@ class Party < ApplicationRecord
   end
 
   def grab_participants
-    participant_ids = party_participants
+    participant_ids = party_participants.pluck(:user_id)
     User.where(id: participant_ids).pluck(:email)
   end
 end

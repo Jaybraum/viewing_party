@@ -4,7 +4,7 @@ RSpec.describe ReviewDataObject do
   describe 'happy path' do
     it "builds a review data object", :vcr do
 
-    review_data = APIService.get_reviews_json(588228)[:results]
+    review_data = APIService.grab_reviews_json(588228)[:results]
 
     movie_review = ReviewDataObject.new(review_data[0])
 

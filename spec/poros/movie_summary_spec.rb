@@ -6,7 +6,7 @@ RSpec.describe MovieSummaryDataObject do
     VCR.insert_cassette('builds_a_movie_summary_object')
     id = 588228
 
-    movie_data = APIService.get_movie_details_json(id)
+    movie_data = APIService.grab_movie_details_json(id)
     movie_data_facade = MoviesDataFacade
 
     movie_details = MovieSummaryDataObject.new(movie_data, movie_data_facade)

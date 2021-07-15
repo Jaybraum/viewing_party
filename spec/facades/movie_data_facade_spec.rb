@@ -72,19 +72,8 @@ RSpec.describe MoviesDataFacade do
       expect(cast_data[0].real_name).to be_a(String)
     end
 
-    it "gets genre objects" do
-
-      VCR.insert_cassette('builds_a_genre_object')
-      genre_data = MoviesDataFacade.generate_genre_objects
-
-      expect(genre_data).to be_an(Array)
-      expect(genre_data[0]).to be_an(GenreDataObject)
-      expect(genre_data[0].id).to be_a(Integer)
-      expect(genre_data[0].name).to be_a(String)
-    end
-
     it "gets movie genres" do
-      movie = APIService.get_movie_details_json(588228)
+      movie = APIService.grab_movie_details_json(588228)
 
       genre_data = MoviesDataFacade.grab_movie_genres(movie)
 
