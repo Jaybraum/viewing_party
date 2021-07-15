@@ -8,7 +8,7 @@
 
   <section class="container">
     <span><p>Vote Average: <%= @movie.vote_average %></p></span>
-    <span><p>Runtime: <%= @movie.runtime %></p></span>
+    <span><p>Runtime: <%= @movie.runtime %> min </p></span>
     <span><p>Genre(s): <% @movie.genres.each do |genre| %>
       <%= genre %>
       <% end %>

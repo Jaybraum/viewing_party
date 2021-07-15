@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.describe MoviesDataFacade do
   describe 'methods' do
     it "gets movie details" do
-
-      VCR.insert_cassette('builds_a_movie_details_object')
       details = MoviesDataFacade.generate_movie_details_object(588228)
-
 
       expect(details).to be_an(MovieDetailsDataObject)
       expect(details.movie_id).to be_an(Integer)
